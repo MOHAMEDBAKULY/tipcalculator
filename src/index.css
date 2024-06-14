@@ -57,6 +57,8 @@ input {
   border: none;
   height: 42px;
   width: 50%;
+  font-size: 16px;
+  text-indent: 4px;
   border-radius: 4px;
   border: 2px solid rgb(0, 0, 0);
 }
@@ -76,6 +78,7 @@ select {
   border: none;
   height: 42px;
   width: 50%;
+  font-size: 16px;
   border-radius: 4px;
   border: 2px solid rgb(0, 0, 0);
 }

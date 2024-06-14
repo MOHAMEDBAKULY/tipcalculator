@@ -1,9 +1,10 @@
+import { useState } from "react";
+
 export default function App() {
   return (
     <div className="background">
       <BillHeader />
       <BillAmount />
-      <TipRating />
       <TipRating />
       <TotalAmount />
       <Reset />
@@ -24,20 +25,38 @@ function BillAmount() {
   return (
     <div className="amount-paid">
       <p className="amount-text">Bill amount</p>
-      <input type="number" />
+      <input type="text" />
     </div>
   );
 }
 
 function TipRating() {
+  const [rating, setRating] = useState(1);
+
   return (
     <div className="tip-rating">
-      <p className="tip-text">How much do you like our service</p>
-      <select>
-        <option>Good service 😀</option>
-        <option>Average service 🙂</option>
-        <option>Excellent service 😋</option>
-        <option>World Class service 😍</option>
+      <RatingChild>
+        <p className="tip-text">How much do you like our service</p>
+        <select value={rating} onRating={setRating}>
+          <option value="good">Good service 😀</option>
+          <option value="average">Average service 🙂</option>
+          <option value="excellent">Excellent service 😋</option>
+          <option value="worldclass">World Class service 😍</option>
+        </select>
+      </RatingChild>
+    </div>
+  );
+}
+
+function RatingChild({ rating, children, onRating }) {
+  return (
+    <div>
+      <p className="tip-text">{children}</p>
+      <select value={rating} onClick={(e) => onRating(e.target.value)}>
+        <option value="good">{children}</option>
+        <option value="average">{children}</option>
+        <option value="excellent">{children}</option>
+        <option value="worldclass">{children}</option>
       </select>
     </div>
   );
